@@ -175,17 +175,64 @@
         </div>
     </div>
     <script>
-        function createLasers() {
-            const laserContainer = document.querySelector('.lasers');
-            for (let i = 0; i < 10; i++) {
-                const laser = document.createElement('div');
-                laser.classList.add('laser');
-                laser.style.left = Math.random() * 100 + 'vw';
-                laser.style.animationDuration = (2 + Math.random() * 2) + 's';
-                laserContainer.appendChild(laser);
-            }
-        }
-        createLasers();
+        // 🔹 1️⃣ Glitch-Titel-Effekt
+    const title = document.querySelector("h1");
+
+    setInterval(() => {
+        title.style.textShadow = `
+            ${Math.random() * 10}px ${Math.random() * 10}px #ff00ff,
+            ${Math.random() * -10}px ${Math.random() * -10}px #00ffff`;
+    }, 200);
+
+    // 🔹 2️⃣ Partikel-Hintergrund
+    const canvas = document.createElement("canvas");
+    document.body.prepend(canvas);
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.position = "fixed";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    canvas.style.zIndex = "0";
+    canvas.style.pointerEvents = "none";
+
+    const particles = [];
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 4 + 1,
+            dx: (Math.random() - 0.5) * 2,
+            dy: (Math.random() - 0.5) * 2
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = "cyan";
+            ctx.fill();
+            p.x += p.dx;
+            p.y += p.dy;
+            if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 🔹 3️⃣ Neon-Hover-Effekt für Buttons
+    document.querySelectorAll(".links a").forEach(link => {
+        link.addEventListener("mouseover", () => {
+            link.style.boxShadow = "0 0 30px #fff, 0 0 60px #ff00ff";
+        });
+        link.addEventListener("mouseleave", () => {
+            link.style.boxShadow = "0 0 10px #fff";
+        });
+    });
     </script>
 </body>
 </html>
