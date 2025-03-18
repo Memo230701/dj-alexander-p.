@@ -7,8 +7,24 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+.music-player button {
+    margin-top: 15px;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    color: #000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #fff;
 }
-         body {
+
+.music-player button:hover {
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    box-shadow: 0 0 20px #fff;
+}
+        
+        body {
             background-color: #000;
             color: #0ff;
             font-family: 'Orbitron', sans-serif;
@@ -161,11 +177,13 @@
         <h1>DJ Alexander P.</h1>
         <div class="bio">
             <p>Alexander P., bekannt als <strong>Xander.314</strong>, ist ein 20-jähriger DJ, der seit 6 Jahren aktiv ist. Seine Leidenschaft für Hardtechno und Trance brachte ihn bereits auf zahlreiche Events. Neben seiner Karriere als DJ studiert er zurzeit an der Hochschule Düsseldorf.</p>
+        </div>
         <div class="music-player">
-    <audio id="backgroundMusic" autoplay loop>
+    <button id="playPauseButton">Play</button>
+    <audio id="backgroundMusic" loop>
         <source src="HAFTBEFEHL - RADW (prod. von Bazzazian) [Official Video].mp3" type="audio/mpeg">
     </audio>
-        </div>
+</div>
           <div class="links">
             <a href="https://www.instagram.com/xander.314/" target="_blank">Instagram</a>
             <a href="https://www.youtube.com/@xander.314" target="_blank">YouTube</a>
@@ -244,28 +262,6 @@
             link.style.boxShadow = "0 0 10px #fff";
         });
     });
-        
-    // 🔹 1️⃣ Glitch-Titel-Effekt (dein bestehender Code)
-    const title = document.querySelector("h1");
-
-    setInterval(() => {
-        title.style.textShadow = `
-            ${Math.random() * 10}px ${Math.random() * 10}px #ff00ff,
-            ${Math.random() * -10}px ${Math.random() * -10}px #00ffff`;
-    }, 200);
-
-    // 🔹 2️⃣ Autoplay-Skript für die Musik
-    document.addEventListener("DOMContentLoaded", function () {
-        const audio = document.getElementById("backgroundMusic");
-
-        function startAudio() {
-            audio.play().catch(error => console.log("Autoplay blockiert:", error));
-            document.removeEventListener("click", startAudio);
-        }
-
-        document.addEventListener("click", startAudio);
-    });
-        
     </script>
 </body>
 </html>
