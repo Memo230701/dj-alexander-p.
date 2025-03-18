@@ -313,11 +313,11 @@ h1 {
             <p> Genug gelesen! Klicke auf Play und schreibe XANDER.314 eine Nachricht und erlebe ihn so schnell wie möglich Live!</p>
             
         </div>
-       <div class="music-player">
+    <div class="music-player">
     <audio id="backgroundMusic" loop>
         <source src="HAFTBEFEHL - RADW (prod. von Bazzazian) [Official Video].mp3" type="audio/mpeg">
     </audio>
-    <button id="playPauseButton">Play</button>
+    <button id="playPauseButton">▶️</button>
     <input type="range" id="progressBar" value="0" max="100">
     <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
 </div>
@@ -399,23 +399,24 @@ h1 {
             link.style.boxShadow = "0 0 10px #fff";
         });
     });
-        
-<script>
+    
 document.addEventListener("DOMContentLoaded", function () {
     const audio = document.getElementById("backgroundMusic");
     const playPauseButton = document.getElementById("playPauseButton");
     const progressBar = document.getElementById("progressBar");
     const volumeControl = document.getElementById("volumeControl");
 
-    playPauseButton.addEventListener("click", function () {
+    function togglePlayPause() {
         if (audio.paused) {
-        audio.play();
-        this.textContent = "Pause";
-    } else {
-        audio.pause();
-        this.textContent = "Play";
+            audio.play();
+            playPauseButton.textContent = "⏸️";
+        } else {
+            audio.pause();
+            playPauseButton.textContent = "▶️";
+        }
     }
-    });
+
+    playPauseButton.addEventListener("click", togglePlayPause);
 
     audio.addEventListener("timeupdate", function () {
         progressBar.value = (audio.currentTime / audio.duration) * 100;
@@ -428,6 +429,7 @@ document.addEventListener("DOMContentLoaded", function () {
     volumeControl.addEventListener("input", function () {
         audio.volume = volumeControl.value;
     });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     const lightshow = document.querySelector(".lightshow");
