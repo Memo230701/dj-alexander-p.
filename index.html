@@ -409,12 +409,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     playPauseButton.addEventListener("click", function () {
         if (audio.paused) {
-            audio.play();
-            playPauseButton.textContent = "Pause";
-        } else {
-            audio.pause();
-            playPauseButton.textContent = "Play";
-        }
+        audio.play();
+        this.textContent = "Pause";
+    } else {
+        audio.pause();
+        this.textContent = "Play";
+    }
     });
 
     audio.addEventListener("timeupdate", function () {
