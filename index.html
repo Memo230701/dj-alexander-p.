@@ -6,6 +6,24 @@
     <title>DJ Alexander P.</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        .music-player button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    border: none;
+    color: #000;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #fff;
+}
+
+.music-player button:hover {
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+    box-shadow: 0 0 20px #fff;
+}
         
         body {
             background-color: #000;
@@ -160,6 +178,12 @@
         <h1>DJ Alexander P.</h1>
         <div class="bio">
             <p>Alexander P., bekannt als <strong>Xander.314</strong>, ist ein 20-jähriger DJ, der seit 6 Jahren aktiv ist. Seine Leidenschaft für Hardtechno und Trance brachte ihn bereits auf zahlreiche Events. Neben seiner Karriere als DJ studiert er zurzeit an der Hochschule Düsseldorf.</p>
+        <div class="music-player">
+    <button id="playPauseButton">Play</button>
+    <audio id="backgroundMusic" loop>
+        <source src="HAFTBEFEHL - RADW (prod. von Bazzazian) [Official Video].mp3" type="audio/mpeg">
+        Dein Browser unterstützt kein Audio-Element.
+    </audio>
         </div>
           <div class="links">
             <a href="https://www.instagram.com/xander.314/" target="_blank">Instagram</a>
@@ -239,6 +263,18 @@
             link.style.boxShadow = "0 0 10px #fff";
         });
     });
+
+        document.getElementById("playPauseButton").addEventListener("click", function () {
+    const audio = document.getElementById("backgroundMusic");
+    if (audio.paused) {
+        audio.play();
+        this.textContent = "Pause";
+    } else {
+        audio.pause();
+        this.textContent = "Play";
+    }
+});
+        
     </script>
 </body>
 </html>
