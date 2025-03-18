@@ -168,9 +168,28 @@
         }
        <style>
         
-.Datenschutz-Button {
-    margin-top: 120px; /* Abstand nach unten */
-    text-align: center;
+.datenschutz-container {
+    position: absolute;
+    bottom: 20px; /* Abstand vom unteren Rand */
+    left: 20px; /* Abstand vom linken Rand */
+}
+
+.datenschutz-container a {
+    display: inline-block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #ccc; /* Dezente graue Schrift */
+    background: none; /* Kein auffälliger Hintergrund */
+    border: 1px solid #444; /* Dünner, dezenter Rand */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.datenschutz-container a:hover {
+    background: #222; /* Leicht dunklerer Hintergrund beim Hover */
+    color: #fff; /* Weiße Schrift für bessere Lesbarkeit */
+}
 }
 
     </style>
@@ -204,7 +223,7 @@
             </form>
         </div>
          <!-- Datenschutz-Link weiter unten -->
-        <div class="Datenschutz-Button">
+        <div class="datenschutz-container">
             <a href="datenschutz.html" target="_blank">Datenschutz</a>
     </div>
     <script>
